@@ -18,18 +18,14 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 """This contains the Okta client code."""
-from __future__ import unicode_literals
 import logging
 import time
 from multiprocessing import Process
-import sys
 import webbrowser
 
 import requests
 
 from aws_okta_keyman import duo
-if sys.version_info[0] < 3:  # pragma: no cover
-    from exceptions import Exception  # Python 2
 
 LOG = logging.getLogger(__name__)
 
@@ -53,7 +49,7 @@ class ReauthNeeded(BaseException):
     """Raised when the SAML Assertion is invalid and we need to reauth."""
     def __init__(self, state_token=None):
         self.state_token = state_token
-        super(ReauthNeeded, self).__init__()
+        super().__init__()
 
 
 class PasscodeRequired(BaseException):
@@ -63,7 +59,7 @@ class PasscodeRequired(BaseException):
         self.fid = fid
         self.state_token = state_token
         self.provider = provider
-        super(PasscodeRequired, self).__init__()
+        super().__init__()
 
 
 class AnswerRequired(BaseException):
@@ -72,7 +68,7 @@ class AnswerRequired(BaseException):
     def __init__(self, factor, state_token):
         self.factor = factor
         self.state_token = state_token
-        super(AnswerRequired, self).__init__()
+        super().__init__()
 
 
 class OktaVerifyRequired(BaseException):
