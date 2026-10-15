@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Host (please complete the following information):**
  - OS: [e.g. iOS]
  - Version [e.g. 0.5.0]
- - Python version [e.g. 3.5.0]
+ - Python version [e.g. 3.13.0]
 
 **Additional context**
 Add any other context about the problem here.

@@ -11,8 +11,8 @@ as shown below.
 
 ## Python Versions
 
-Python 2.7.4+ and Python 3.5.0+ are supported. As much Python version compatibility as
-possible will be maintained.
+Python 3.9 and newer are supported; Python 3.13 is recommended. As much Python version
+compatibility as possible will be maintained within the supported 3.x range.
 
 ## Testing
 
