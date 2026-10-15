@@ -1,6 +1,4 @@
-from __future__ import unicode_literals
 
-import sys
 import unittest
 
 import requests
@@ -8,10 +6,7 @@ import requests
 from aws_okta_keyman.okta import UnknownError, ReauthNeeded
 from aws_okta_keyman.okta_saml import OktaSaml
 
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
+from unittest import mock
 
 EXAMPLE_ASSERTION = (
     '<!DOCTYPE html><html lang="en"><body id="app" class="enduser-app">'

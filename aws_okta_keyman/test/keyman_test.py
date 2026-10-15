@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
-from __future__ import unicode_literals
 
 import logging
-import sys
 import unittest
 import xml
 
@@ -14,10 +12,7 @@ import botocore
 import keyring
 import requests
 
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
+from unittest import mock
 
 
 class KeymanTest(unittest.TestCase):

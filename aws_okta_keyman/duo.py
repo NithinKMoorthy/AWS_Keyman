@@ -13,16 +13,12 @@
 # Copyright 2018 Nathan V
 """All the Duo things."""
 
-import sys
 import time
 from multiprocessing import Process
 
 import requests
 
-if sys.version_info[0] < 3:  # pragma: no cover
-    from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-else:  # pragma: no cover
-    from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
 class PasscodeRequired(BaseException):
@@ -31,7 +27,7 @@ class PasscodeRequired(BaseException):
     def __init__(self, factor, state_token):
         self.factor = factor
         self.state_token = state_token
-        super(PasscodeRequired, self).__init__()
+        super().__init__()
 
 
 class FactorRequired(BaseException):
@@ -40,17 +36,17 @@ class FactorRequired(BaseException):
     def __init__(self, factor, state_token):
         self.factor = factor
         self.state_token = state_token
-        super(FactorRequired, self).__init__()
+        super().__init__()
 
 
-class QuietHandler(BaseHTTPRequestHandler, object):
+class QuietHandler(BaseHTTPRequestHandler):
     """We have to do this HTTP sever silliness because the Duo widget has to be
     presented over HTTP or HTTPS or the callback won't work.
     """
 
     def __init__(self, html, *args):
         self.html = html
-        super(QuietHandler, self).__init__(*args)
+        super().__init__(*args)
 
     def log_message(self, _format, *args):
         """Mute the server log."""

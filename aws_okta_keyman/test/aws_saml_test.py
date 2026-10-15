@@ -19,14 +19,9 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-import sys
+import unittest
 
 from aws_okta_keyman.aws_saml import SamlAssertion
-
-if sys.version_info < (2, 7):
-    import unittest2 as unittest
-else:
-    import unittest
 
 
 idp_arn = 'arn:aws:iam::1111:saml-provider/IDP'

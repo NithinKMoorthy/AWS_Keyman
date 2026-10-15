@@ -21,7 +21,6 @@
 AWS Session and Credential classes; how we record the creds and how we talk
 to AWS to get them.
 """
-from __future__ import unicode_literals
 
 import configparser
 import datetime
@@ -29,7 +28,6 @@ import json
 import logging
 import os
 import re
-from builtins import str
 
 import boto3
 import botocore

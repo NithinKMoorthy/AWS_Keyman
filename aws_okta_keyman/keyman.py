@@ -16,7 +16,6 @@
 # Copyright 2018 Nextdoor.com, Inc
 # Copyright 2018 Nathan V
 """This module contains the primary logic of the tool."""
-from __future__ import unicode_literals
 
 import getpass
 import logging
@@ -27,7 +26,6 @@ import sys
 import time
 import traceback
 import xml
-from builtins import input
 
 import botocore
 import keyring
@@ -460,11 +458,11 @@ class Keyman:
                     return 3
                 continue  # pragma: no cover
             except (okta.UnknownError, aws.InvalidSaml):
-                self.log.error('API response invalid. Retrying...', okta.UnknownError)
+                self.log.error('API response invalid. Retrying...')
                 time.sleep(1)
                 retries += 1
                 if retries > 2:
-                    self.log.fatal('SAML failure. Please reauthenticate.', okta.UnknownError)
+                    self.log.fatal('SAML failure. Please reauthenticate.')
                     return 1
                 continue  # pragma: no cover
             except okta.ReauthNeeded as err:
