@@ -18,18 +18,14 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 """This contains the Okta client code."""
-from __future__ import unicode_literals
 import logging
 import time
 from multiprocessing import Process
-import sys
 import webbrowser
 
 import requests
 
 from aws_okta_keyman import duo
-if sys.version_info[0] < 3:  # pragma: no cover
-    from exceptions import Exception  # Python 2
 
 LOG = logging.getLogger(__name__)
 

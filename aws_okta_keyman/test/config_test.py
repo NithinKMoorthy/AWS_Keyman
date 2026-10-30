@@ -1,17 +1,10 @@
-from __future__ import unicode_literals
-
 import os
-import sys
 import unittest
+from unittest import mock
 
 import yaml
 
 from aws_okta_keyman.config import Config
-
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
 
 
 class ConfigTest(unittest.TestCase):

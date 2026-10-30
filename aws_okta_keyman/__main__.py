@@ -16,8 +16,6 @@
 # Copyright 2018 Nathan V
 """Main function that passes off to the Keyman module."""
 
-from __future__ import unicode_literals
-
 import logging
 import sys
 

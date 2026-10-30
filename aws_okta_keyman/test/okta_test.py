@@ -1,16 +1,9 @@
-from __future__ import unicode_literals
-
-import sys
 import unittest
+from unittest import mock
 
 import requests
 
 from aws_okta_keyman import okta, duo
-
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
 
 
 # Successful response message from Okta when you have fully logged in
