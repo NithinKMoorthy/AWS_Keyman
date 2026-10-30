@@ -21,15 +21,12 @@
 AWS Session and Credential classes; how we record the creds and how we talk
 to AWS to get them.
 """
-from __future__ import unicode_literals
-
 import configparser
 import datetime
 import json
 import logging
 import os
 import re
-from builtins import str
 
 import boto3
 import botocore
@@ -53,7 +50,7 @@ class MultipleRoles(BaseException):
     """Raised when AWS offers multiple roles."""
 
 
-class Credentials(object):
+class Credentials:
     """Simple AWS Credentials Profile representation.
 
     This object reads in an Amazon ~/.aws/credentials file, and then allows you
@@ -101,7 +98,7 @@ class Credentials(object):
             name=name, file=self.filename))
 
 
-class Session(object):
+class Session:
     """Amazon Federated Session Generator.
 
     This class is used to contact Amazon with a specific SAML Assertion and
@@ -159,12 +156,12 @@ class Session(object):
         try:
             msg = ("Session Expiration: {}  // Now: {}".format(
                 self.creds['Expiration'],
-                datetime.datetime.utcnow()))
+                datetime.datetime.now(datetime.timezone.utc)))
             LOG.debug(msg)
             offset = datetime.timedelta(seconds=600)
-            now = datetime.datetime.utcnow()
+            now = datetime.datetime.now(datetime.timezone.utc)
             expir = datetime.datetime.strptime(str(self.creds['Expiration']),
-                                               '%Y-%m-%d %H:%M:%S+00:00')
+                                               '%Y-%m-%d %H:%M:%S%z')
 
             return (now + offset) < expir
         except (ValueError, TypeError):
@@ -254,7 +251,7 @@ class Session(object):
             region=self.region,
             creds=self.creds)
         LOG.info('Current time is {time}'.format(
-            time=datetime.datetime.utcnow()))
+            time=datetime.datetime.now(datetime.timezone.utc)))
         LOG.info('Session expires at {time} ⏳'.format(
             time=self.creds['Expiration']))
 
