@@ -1,16 +1,8 @@
-from __future__ import unicode_literals
-
-import sys
 import unittest
+from io import BytesIO as IO
+from unittest import mock
 
 from aws_okta_keyman import duo
-
-if sys.version_info[0] < 3:
-    import mock  # Python 2
-    from StringIO import StringIO as IO
-else:
-    from unittest import mock  # Python 3
-    from io import BytesIO as IO
 
 DETAILS = {
     'host': 'somehost',

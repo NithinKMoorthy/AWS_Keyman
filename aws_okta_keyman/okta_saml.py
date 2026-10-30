@@ -18,7 +18,6 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 """This contains all of the Okta SML specific code."""
-from __future__ import unicode_literals
 import base64
 import logging
 import re

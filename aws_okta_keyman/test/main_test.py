@@ -1,14 +1,7 @@
-from __future__ import unicode_literals
-
-import sys
 import unittest
+from unittest import mock
 
 import aws_okta_keyman
-
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
 
 
 class MainTest(unittest.TestCase):

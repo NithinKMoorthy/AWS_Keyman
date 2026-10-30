@@ -13,16 +13,11 @@
 # Copyright 2018 Nathan V
 """All the Duo things."""
 
-import sys
 import time
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from multiprocessing import Process
 
 import requests
-
-if sys.version_info[0] < 3:  # pragma: no cover
-    from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-else:  # pragma: no cover
-    from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
 class PasscodeRequired(BaseException):

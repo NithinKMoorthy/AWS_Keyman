@@ -37,7 +37,7 @@ Benefits vs other similar tools:
 * No API keys required; just your Okta username and password
 * No analytics or metrics collection; this tool does _not_ call home in any way
 * Open source distributed as source; you can see what you're running
-* Wide Python version support; works on Python 2.7.4+ and 3.5.0+.
+* Works on Python 3.11+.
 
 ### Optional MFA Authentication
 If you organization or integration requires MFA  we will automatically detect that
@@ -232,7 +232,7 @@ App ID:
 ```
 
 ## Python Versions
-Python 2.7.4+ and Python 3.5.0+ are supported.
+Python 3.11+ is supported.
 
 Support for older Python versions will be maintained as long as is reasonable.
 Before support is removed a reminder/warning will be provided.
