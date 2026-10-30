@@ -1,17 +1,11 @@
-from __future__ import unicode_literals
-
 import datetime
-import sys
 import unittest
 
 import botocore
 
 from aws_okta_keyman import aws
 
-if sys.version_info[0] < 3:  # Python 2
-    import mock
-else:
-    from unittest import mock
+from unittest import mock
 
 
 AWS_HTML_MULTIACCOUNT_LOGIN = (
@@ -156,13 +150,15 @@ class TestSession(unittest.TestCase):
         session = aws.Session('BogusAssertion')
 
         # Mock out the expiration time to 4:10PM UTC
-        expir_mock = datetime.datetime(2017, 7, 25, 16, 10, 00, 000000)
+        expir_mock = datetime.datetime(2017, 7, 25, 16, 10, 00, 000000,
+                                       tzinfo=datetime.timezone.utc)
         # Now set our current time to 4:05PM UTC
-        mock_now = datetime.datetime(2017, 7, 25, 16, 4, 00, 000000)
+        mock_now = datetime.datetime(2017, 7, 25, 16, 4, 00, 000000,
+                                     tzinfo=datetime.timezone.utc)
 
         # Should return False - less than 600 seconds away from expiration
         with mock.patch('datetime.datetime') as dt_mock:
-            dt_mock.utcnow.return_value = mock_now
+            dt_mock.now.return_value = mock_now
             dt_mock.strptime.return_value = expir_mock
             ret = session.is_valid
 
@@ -184,13 +180,15 @@ class TestSession(unittest.TestCase):
         session = aws.Session('BogusAssertion')
 
         # Mock out the expiration time to 4:10PM UTC
-        expir_mock = datetime.datetime(2017, 7, 25, 16, 10, 00, 000000)
+        expir_mock = datetime.datetime(2017, 7, 25, 16, 10, 00, 000000,
+                                       tzinfo=datetime.timezone.utc)
         # Now set our current time to 3:55PM UTC
-        mock_now = datetime.datetime(2017, 7, 25, 15, 55, 00, 000000)
+        mock_now = datetime.datetime(2017, 7, 25, 15, 55, 00, 000000,
+                                     tzinfo=datetime.timezone.utc)
 
         # Should return True - more than 600 seconds to expiration
         with mock.patch('datetime.datetime') as dt_mock:
-            dt_mock.utcnow.return_value = mock_now
+            dt_mock.now.return_value = mock_now
             dt_mock.strptime.return_value = expir_mock
             ret = session.is_valid
 
